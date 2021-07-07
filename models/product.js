@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var Schema = mongoose.Schema;
+var Schema = mongoose.Schema;   
 
 var ProductSchema = new Schema(
     {
@@ -9,8 +9,8 @@ var ProductSchema = new Schema(
         price: {type: String, required: true},
         stock: {type: String, required: true},
         manufacturer: {type: String, required: true},
-        features: [String],
-        img: {data: Buffer, contentType: String},
+        technicalInformation: [String],
+        img: {type: String},
     }
 )
 
