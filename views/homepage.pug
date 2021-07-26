@@ -3,6 +3,19 @@ extends layout
 block content
   h4 System Builder
   div
-    each product in product_list
-      a(href=product.url) #{product.component.name                                }
+  table(style='width:100%', border='1')
+    thead
+      tr 
+        th Component 
+        th Selection
+        th Price
+    tbody
+      each component in component_list
+        tr
+          td
+            a(href=component.url) #{component.name}
+            a(href=) choose #{component.name}
+
+    
+
   

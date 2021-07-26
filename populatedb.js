@@ -27,8 +27,8 @@ var components = []
 var products = []
 var productinstances = []
 
-function componentCreate(name, cb) {
-  componentdetail = {name: name}
+function componentCreate(name, product, cb) {
+  componentdetail = {name: name, product: product};
   
   var component = new Component(componentdetail);
        
@@ -56,14 +56,7 @@ function productCreate(name, component, price, stock, manufacturer, technicalInf
     
   var product = new Product(productdetail);    
   product.save(function (err) {
-    if (err) {              
-
-
-
-
-
-
-      asasddddsfaaqsqqqswsqawer
+    if (err) {
       cb(err, null)
       return
     }

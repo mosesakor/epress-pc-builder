@@ -1,0 +1,18 @@
+extends layout 
+
+block content
+  h4 System Builder
+  div
+  each product in products
+    div
+      p= product.name
+      p= product.stock
+    div
+      p= product.price
+      p
+    div
+      button(class='add' data-componentid=`${component._id}` data-productid=`${product._id}`) add
+  
+  script(type='text/javascript' src='/javascripts/updateCookies.js')
+      
+  

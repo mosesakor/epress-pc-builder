@@ -1,0 +1,35 @@
+extends layout 
+
+block content
+  h4 System Builder
+  div
+  - var totalPrice = 0
+  table(style='width:100%', border='1')
+    thead
+      tr 
+        th Component 
+        th Selection
+        th Price
+    tbody
+    each component in components
+      - let key = component._id
+      - let product = null
+      if (userList[key])
+        -  product = userList[key]
+          tr
+            td #{component.name}
+            td
+              a(href=product.url) #{product.name}
+            td #{product.price}
+      else
+        tr
+          td #{component.name}
+          td
+            a(href=component.url) choose a #{component.name}
+
+                
+      
+    
+
+
+          

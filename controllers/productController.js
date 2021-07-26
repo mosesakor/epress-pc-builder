@@ -2,11 +2,10 @@ var Product = require('../models/product');
 var Component = require('../models/component')
 
 exports.homepage = function(req, res, next) {
-    Product.find({}, 'title component')
-    .populate('component')
-    .exec(function (err, list_products) {
+    Component.find()
+    .exec(function (err, list_components) {
         if (err) { return next(err); }
-        res.render('homepage', { title: 'System Builder', product_list: list_products });
+        res.render('homepage', { title: 'System Builder', component_list: list_components });
     });
 };
 
