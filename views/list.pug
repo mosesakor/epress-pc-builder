@@ -21,11 +21,15 @@ block content
             td
               a(href=product.url) #{product.name}
             td #{product.price}
+            td
+              button(class='removeKey' data-removekey=`${key}`) remove
       else
         tr
           td #{component.name}
           td
             a(href=component.url) choose a #{component.name}
+  script(type='text/javascript' src='/javascripts/removeCookies.js')
+  
 
                 
       

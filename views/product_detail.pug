@@ -1,0 +1,29 @@
+extends layout 
+
+block content
+  h4 System Builder
+  h1= product.name
+  div
+    a(href=`${product.url}/update`) update
+  div
+    img()
+    div
+      p Component 
+      p #{component.name}
+    div
+      p Price
+      p #{product.price}
+    div 
+      p Stock 
+      p #{product.stock}
+    div
+      ul
+        each techInfo in product.technicalInformation
+          li= techInfo
+    div
+      button(class='add' data-componentid=`${component._id}` data-productid=`${product._id}`) add
+
+  script(type='text/javascript' src='/javascripts/updateCookies.js')
+      
+        
+    
