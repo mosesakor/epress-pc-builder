@@ -102,7 +102,6 @@ exports.product_update_get = function (req, res, next) {
         title: "Update Product",
         product: results.product,
         components: results.components,
-        isUpdating: true,
       });
     }
   );
@@ -110,96 +109,64 @@ exports.product_update_get = function (req, res, next) {
 
 // Handle product update on POST.
 exports.product_update_post = [
+
+  // Validate and sanitise fields.
   body("name", "Name must be at least 3 characters in length")
     .trim()
     .isLength({ min: 3 })
     .escape(),
   body("technialInformation").trim().escape(),
-  body("Stock", "Stock cannot be lower than 0").isInt({ min: 0, max: 9999 }),
-  body("price", "Price must be between $0 and $999999").isFloat({
-    min: 0,
-    max: 999999,
-  }),
+  body("stock", "Stock cannot be lower than 0"),
+  body("price", "Price must be between $0 and $999999"),
   body("component", "Component must not be empty").trim().escape(),
 
+  // Process request after validation and sanitization.
   (req, res, next) => {
-    if (req.body.password != process.env.ADMIN_PASSWORD) {
-      if (req.file) {
-        fs.unlink(`public/images/${req.file.img}`, (err) => {
-          if (err) console.log(err);
-          console.log(req.file.img, "was deleted");
-        });
-      }
-      let err = new Error("The password you entered is incorrect.");
-      err.status = 401;
-      return next(err);
-    } else {
-      const errors = validationResult(req);
-      const product = new Product({
-        name: req.body.name,
-        technialInformation: req.body.technicalInformation,
-        stock: req.body.stock,
-        price: req.body.price,
-        component: req.body.component,
-        _id: req.params.id,
-      });
+    
+    // Extract the validation errors from a request.
+    const errors = validationResult(req);
 
-      if (req.file && errors.isEmpty()) {
-        console.log('FILE', req.file)
-        product.img = req.file.img;
-        fs.unlink(`public/images/${req.body.img}`, (err) => {
-          if (err) console.log(err);
-          console.log(req.body.img, "was deleted");
-        });
-      } else if(req.body.img && req.body.img !='null' && req.body.img !='undefined'){
-        component.img = req.body.img;
-      }
+    // Create a Product object with escaped/trimmed data and old id.
+    const product = new Product({
+      name: req.body.name,
+      technialInformation: req.body.technicalInformation,
+      stock: req.body.stock,
+      price: req.body.price,
+      component: req.body.component,
+      _id: req.params.id,
+    });
 
-      if (!errors.isEmpty()) {
-        if(req.file){
-          fs.unlink(`public/images/${req.file.img}`, (err) => {
-            if (err) console.log(err);
-            console.log(req.file.img, "was deleted");
+    if (!errors.isEmpty()) {
+
+      async.parallel(
+        {
+          components: function (callback) {
+            Component.find().exec(callback);
+          },
+        },
+        function (err, results) {
+          if (err) return next(err);
+          res.render('product_update_form', {
+            title: "Update Product",
+            product: product,
+            components: results.components,
+            errors: errors.array(),
           });
         }
-        
-        async.parallel(
-          {
-            components: function (callback) {
-              Component.find().exec(callback);
-            },
-          },
-          function (err, results) {
-            if (err) return next(err);
-            res.render("product_update", {
-              title: "Update Product",
-              product: product,
-              components: results.components,
-              isUpdating: true,
-              errors: errors.array(),
-            });
+      );
+      return;
+    } else {
+      Product.findByIdAndUpdate(
+        req.params.id,
+        product,
+        {},
+        function (err, theproduct) {
+          if (err) { return next(err); }
+          if (theproduct) {
+            res.redirect(theproduct.url);
           }
-        );
-        return;
-      } else {
-        Product.findByIdAndUpdate(
-          req.params.id,
-          product,
-          {},
-          function (err, theproduct) {
-            if (err) return next(err);
-            if (theproduct) {
-              res.redirect(theproduct.url);
-            } else {
-              let err = new Error(
-                "Product not found. It may have been deleted, or does not exist."
-              );
-              err.status = 404;
-              return next(err);
-            }
-          }
-        );
-      }
+        }
+      );
     }
-  },
+},
 ];
