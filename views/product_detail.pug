@@ -6,13 +6,12 @@ block content
   div
     a(href=`${product.url}/update`) update
   div
-    img()
     div
       p Component 
       p #{component.name}
     div
       p Price
-      p #{product.price}
+      p= product.price
     div 
       p Stock 
       p #{product.stock}

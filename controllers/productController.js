@@ -115,9 +115,9 @@ exports.product_update_post = [
     .trim()
     .isLength({ min: 3 })
     .escape(),
-  body("technialInformation").trim().escape(),
+  body("price", "Price must be between $0 and $999999").trim().escape(),
+  body("technicalInformation", "Must be present").trim().escape(),
   body("stock", "Stock cannot be lower than 0"),
-  body("price", "Price must be between $0 and $999999"),
   body("component", "Component must not be empty").trim().escape(),
 
   // Process request after validation and sanitization.
@@ -129,7 +129,7 @@ exports.product_update_post = [
     // Create a Product object with escaped/trimmed data and old id.
     const product = new Product({
       name: req.body.name,
-      technialInformation: req.body.technicalInformation,
+      technicalInformation: req.body.technicalInformation,
       stock: req.body.stock,
       price: req.body.price,
       component: req.body.component,

@@ -37,3 +37,27 @@ exports.component_update_get = function(req, res) {
 exports.component_update_post = function(req, res) {
     res.send('NOT IMPLEMENTED: Component update POST');
 };
+
+
+       fieldset
+          legend FEATURES
+          textarea(name="", cols="30", rows="5") #{undefined===product ? '' : product.technicalInformation}
+        fieldset
+          legend PRICE
+          input(min='0', required, type='text', name='price', id='price', value=(undefined===product ? '' : product.price))
+        fieldset
+          legend STOCK 
+          input(min='0', required, type='text', name='price', id='price', value=(undefined===product ? '' : product.stock))
+        fieldset
+          legend SELECT CATEGORY 
+          select()
+            each component in components
+              if (product === undefined)
+                option(value=component._id) #{component.name}
+              else
+                option(value=component.id) #{component.name}
+        button(type='submit') Submit
+                
+
+    
+   

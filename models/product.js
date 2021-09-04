@@ -6,10 +6,10 @@ var ProductSchema = new Schema(
     {
         name: {type: String, required: true},
         component: {type: Schema.Types.ObjectId, ref: 'Component', required: true},
-        price: {type: String, required: true},
-        stock: {type: String, required: true},
+        price: { type: Number, required: true, max: 999999, min: 0 },
+        inStock: { type: Number, required: true, max: 9999, min: 0 },
         manufacturer: {type: String, required: true},
-        technicalInformation: [String],
+        technicalInformation: {type: String, required: true},
         img: {type: String},
     }
 )
