@@ -12,7 +12,7 @@ var path = require("path");
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.redirect('/catalog');
+  res.redirect('/list');
 });
 
 // Require controller modules.

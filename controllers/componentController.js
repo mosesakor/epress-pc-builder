@@ -6,7 +6,7 @@ var async = require('async')
 // Display list of all Components.// Display list of all Components.
 exports.component_list = function(req, res) {
     res.send('NOT IMPLEMENTED: Component list');
-};999
+};
 
 // Display detail page for a specific Component.
 

@@ -14,13 +14,13 @@ block content
           input(minlength='3', required, type='text', name='name', id='name', value=(undefined===product ? '' : product.name))
         fieldset
           legend FEATURES
-          textarea(name="", cols="30", rows="5") #{value=(undefined===product ? '' : product.technicalInformation)} 
+          textarea(required, name="technicalInformation", id="technicalInformation", cols="30", rows="10") #{value=(undefined===product ? '' : product.technicalInformation)}
         fieldset
           legend PRICE
           input(required, type='text', name='price', id='price', value=(undefined===product ? '' : product.price))
         fieldset
           legend STOCK 
-          input(min='0', required, type='text', name='price', id='price', value=(undefined===product ? '' : product.stock))
+          input(required, type='text', name='stock', id='stock', value=(undefined===product ? '' : product.stock))
         button(type='submit') Submit
                 
 

@@ -4,6 +4,22 @@ block content
   h4 System Builder
   div
   - var totalPrice = 0
+  each component in components
+    - let key = component._id
+    - let product = null
+      if (userList[key])
+        -  product = userList[key]
+        div(class='card')
+          div(class='card--info')
+            p Selection
+            a(href=product.url) #{product.name}
+            button(class='button') Buy
+          div(class='card--info')
+            p Price
+            p #{product.price}
+            button Remove
+    
+
   table(style='width:100%', border='1')
     thead
       tr 
