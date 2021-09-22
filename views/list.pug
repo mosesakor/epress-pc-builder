@@ -1,8 +1,7 @@
 extends layout 
 
 block content
-  h4 System Builder
-  div
+  div(class='container')
   - var totalPrice = 0
   each component in components
     - let key = component._id
@@ -10,40 +9,29 @@ block content
       if (userList[key])
         -  product = userList[key]
         div(class='card')
-          div(class='card--info')
-            p Selection
-            a(href=product.url) #{product.name}
-            button(class='button') Buy
-          div(class='card--info')
-            p Price
-            p #{product.price}
-            button Remove
-    
-
-  table(style='width:100%', border='1')
-    thead
-      tr 
-        th Component 
-        th Selection
-        th Price
-    tbody
-    each component in components
-      - let key = component._id
-      - let product = null
-      if (userList[key])
-        -  product = userList[key]
-          tr
-            td #{component.name}
-            td
-              a(href=product.url) #{product.name}
-            td #{product.price}
-            td
-              button(class='removeKey' data-removekey=`${key}`) remove
+          div(class='card-item-0')
+            p CPU
+            hr
+          div(class='card-item-1 ' )
+            h4(class='is-size-6') Selection
+            p(class='is-size-5')
+              a(href=product.url) Intel Core i9-10980XE
+          div(class='card-item-2')
+            h4(class='is-size-7') Price
+            p(class='is-size-6') $#{product.price}
+          div(class='card-item-3')
+            button(class='button is-primary') Buy
+          div(class='card-item-4')
+            button(class='button is-danger is-hovered removeKey' data-removekey=`${key}`) Remove
       else
-        tr
-          td #{component.name}
-          td
-            a(href=component.url) choose a #{component.name}
+        div
+          hr
+          div(class='card-item') #{component.name}
+          div
+            p
+              a(class='button' href=component.url) choose a #{component.name}
+
+
   script(type='text/javascript' src='/javascripts/removeCookies.js')
   
 

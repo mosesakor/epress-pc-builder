@@ -44,6 +44,7 @@ exports.product_detail = function (req, res, next) {
           title: product.name,
           product: product,
           component: product.component,
+          features: product.technicalInformation.split(','),
         });
       });
   };

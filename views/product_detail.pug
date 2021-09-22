@@ -1,29 +1,39 @@
 extends layout 
 
 block content
-  h4 System Builder
-  h1= product.name
-  div
-    a(href=`${product.url}/update`) update
-    a(href=`${product.url}/delete`) delete
-  div
-    div
-      p Component 
-      p #{component.name}
-    div
-      p Price
-      p= product.price
-    div 
-      p Stock 
-      p #{product.stock}
-    div
-      ul
-        each techInfo in product.technicalInformation
-          li= techInfo
-    div
-      button(class='add' data-componentid=`${component._id}` data-productid=`${product._id}`) add
+  h3= product.name
+  div(class='container')
+    div(class='edit-product')
+      p(class='update')
+        a(href=`${product.url}/update` class='') Update
+      p(class='delete')
+        a(href=`${product.url}/delete`) Delete
+    div(class='product-image')
+      img(class='')
+      div
+        h4 Product Specification
+        ul
+          -
+          each techInfo in features
+            hr
+            li= techInfo
 
-  script(type='text/javascript' src='/javascripts/updateCookies.js')
-      
+        p Component 
+        p #{component.name}
+      div
+        p Price
+        p= product.price
+      div 
+        p Stock 
+        p #{product.stock}
+      div
+        ul
+          each techInfo in product.technicalInformation
+            li= techInfo
+      div
+        button(class='add' data-componentid=`${component._id}` data-productid=`${product._id}`) add
+
+    script(type='text/javascript' src='/javascripts/updateCookies.js')
         
-    
+          
+      

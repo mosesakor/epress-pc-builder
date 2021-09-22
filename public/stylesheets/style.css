@@ -3,20 +3,89 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+
+p {
+  margin-bottom: 8px;
+}
+
+h4 {
+  margin-bottom: 5px;
+  font-weight: 700;
+  opacity: 0.5;
+}
+
+button {
+  width: 100%;
+  background-color: lime;
+}
+
+.container {
+  margin-bottom: 10px;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 7px;
+  padding: 15px;
+}
+
+.card-item {
+  margin: 10px;
+  font-weight: bold;
+}
+
+.card-item > a {
+  background-color: lime;
+}
+
+.card-item-0 {
+    grid-column: 1 / 3;
+}
+
+.card-item-1 {
+
+}
+
+.card-item-2 {
+
+
+}
+
+.card-item-3 {
+
+}
+
+.card-item-4 {
+
+}
+
+/** product_detail page styling **/
+.edit-product {
+  text-align: center;
+}
+
+.update, .delete {
+  display: inline;
+  padding: 2px 5px;
 }
 
 
-@media only screen and (max-width: 600px) {
-  thead, td {
+
+
+
+@media only screen and (min-width: 1000px) {
+  .card {
+    grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
+  }
+
+  h5 {
     display: none;
   }
 
-  tr {
-    height: 200px;
-
+  .card-item-0 {
+    grid-column: initial;
   }
-
 }
+
 
