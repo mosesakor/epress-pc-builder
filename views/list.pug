@@ -1,35 +1,37 @@
 extends layout 
 
 block content
-  div(class='container')
-  - var totalPrice = 0
-  each component in components
-    - let key = component._id
-    - let product = null
-      if (userList[key])
-        -  product = userList[key]
-        div(class='card')
-          div(class='card-item-0')
-            p CPU
-            hr
-          div(class='card-item-1 ' )
-            h4(class='is-size-6') Selection
-            p(class='is-size-5')
-              a(href=product.url) Intel Core i9-10980XE
-          div(class='card-item-2')
-            h4(class='is-size-7') Price
-            p(class='is-size-6') $#{product.price}
-          div(class='card-item-3')
-            button(class='button is-primary') Buy
-          div(class='card-item-4')
-            button(class='button is-danger is-hovered removeKey' data-removekey=`${key}`) Remove
-      else
-        div
-          hr
-          div(class='card-item') #{component.name}
+  div(class='list-container')
+    div(class='secondary-navigation')
+      h1(class='is-size-2')=title
+    - var totalPrice = 0
+    each component in components
+      - let key = component._id
+      - let product = null
+        if (userList[key])
+          -  product = userList[key]
+          div(class='list-card')
+            div(class='card-item-0')
+              a(href=product.url class='liner is-size-5 has-text-weight-medium has-text-black') #{component.name}
+            div(class='card-item-1 ' )
+              h1(class='is-size-6 has-text-grey') Selection
+              p(class='is-size-6')
+                a(href=product.url class='has-text-black') Intel Core i9-10980XE
+            div(class='card-item-2')
+              h4(class='is-size-6 has-text-grey') Price
+              p(class='is-size-6')
+                a(href=product.url class='has-text-black') $#{product.price}
+            div(class='card-item-3')
+              button(class='component-button button is-link') Buy from Amazon
+            div(class='card-item-4')
+              button(class='component-button button is-danger removeKey' data-removekey=`${key}`) Remove
+        else
           div
-            p
-              a(class='button' href=component.url) choose a #{component.name}
+            hr
+            div(class='card-item') #{component.name}
+            div
+              p
+                a(class='button' href=component.url) choose a #{component.name}
 
 
   script(type='text/javascript' src='/javascripts/removeCookies.js')

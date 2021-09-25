@@ -1,34 +1,62 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #001119;;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  padding: 0;
+  margin: 0;
+}
 
 p {
   margin-bottom: 8px;
 }
 
-h4 {
-  margin-bottom: 5px;
-  font-weight: 700;
-  opacity: 0.5;
+
+.list-container {
+  background-color: white;
+  color:black;
 }
 
-button {
-  width: 100%;
-  background-color: lime;
+.list-card > hr {
+  background-color: black;
+  border: 3px solid red;
 }
 
-.container {
+.product-detail-container {
   margin-bottom: 10px;
+  text-align: center;
 }
 
-.card {
+.list-card {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 7px;
   padding: 15px;
 }
+
+.liner {
+  display: flex;
+  align-items: flex-start;
+  text-align: left;
+}
+.liner:after {
+  content: '';
+  flex-grow: 1;
+  height: 1px;
+  background: #d66853;
+  min-width: 20px;
+  margin: auto;
+  margin-top: 10px;
+}
+.liner:after {
+  margin-left: 20px;
+}
+
 
 .card-item {
   margin: 10px;
@@ -40,7 +68,17 @@ button {
 }
 
 .card-item-0 {
-    grid-column: 1 / 3;
+  grid-column: 1 / 3;
+}
+
+.card-item-0 > a::after {
+  content: "";
+  display: inline-block;
+  background: gray;
+  height: 2px;
+  width: 100%;
+  overflow-x: hidden;
+  margin: 2%;
 }
 
 .card-item-1 {
@@ -60,14 +98,91 @@ button {
 
 }
 
+
+
 /** product_detail page styling **/
+.secondary-navigation {
+  text-align: center;
+  background-color: #3b426e;
+  padding: 10px;
+  color: white;
+  padding-top: 6rem;
+  font-size: large;
+}
+
+.product-edit > span {
+  margin-left: 10px;
+}
+
+.product-detail-body > div {
+  margin-top: 20px;
+  margin-bottom: 20px
+}
+
 .edit-product {
   text-align: center;
+  font-size: medium;
+  background-color: #3b426e;
+  padding-bottom: 20px;
+  padding-top: 10px;
+  margin-bottom: 80px;
 }
+
+span > a {
+  text-decoration: none;
+}
+
+
+
+
+.product-detail-container > hr:first-of-type, div > hr:last-child {
+  border-top: 3px solid white;
+}
+
+.product-detail-container > div > hr {
+  border-top: 0.2px solid white;
+  border-bottom: 0px solid white;
+  opacity: 0.5;
+}
+
+
 
 .update, .delete {
   display: inline;
   padding: 2px 5px;
+}
+
+.product-image {
+  margin-top: 2rem;
+}
+
+.product-price {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.product-specs {
+  padding: 2rem;
+}
+
+.features-container {
+
+}
+
+.feature-item {
+  list-style-type: none;
+
+}
+
+.add-button {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border: 3px solid red;
+  width: 90%;
+}
+
+.component-button {
+  width: 70%;
 }
 
 

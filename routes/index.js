@@ -58,7 +58,7 @@ router.get("/list", function (req, res, next) {
         });
       });
       res.render("list", {
-        title: "My List - PC Part Planner",
+        title: "System Builder",
         userList: userList,
         components: results.components,
       });

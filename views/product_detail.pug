@@ -1,37 +1,28 @@
 extends layout 
 
 block content
-  h3= product.name
-  div(class='container')
-    div(class='edit-product')
-      p(class='update')
-        a(href=`${product.url}/update` class='') Update
-      p(class='delete')
-        a(href=`${product.url}/delete`) Delete
+  nav(class='navbar is-black')
+  div(class='product-detail-container')
+    div(class='product-name')
+      h1= product.name
+      p(class='product-edit')
+        span
+          a(href=`${product.url}/update`) Update
+        span
+          a(href=`${product.url}/delete`) Delete
     div(class='product-image')
-      img(class='')
-      div
-        h4 Product Specification
-        ul
-          -
-          each techInfo in features
-            hr
-            li= techInfo
-
-        p Component 
-        p #{component.name}
-      div
-        p Price
-        p= product.price
-      div 
-        p Stock 
-        p #{product.stock}
-      div
-        ul
-          each techInfo in product.technicalInformation
-            li= techInfo
-      div
-        button(class='add' data-componentid=`${component._id}` data-productid=`${product._id}`) add
+      img(class='' src='/images/01.jpg')
+    div(class='product-specs')
+      h2 Product Specification
+      div(class='features-container')
+        hr
+        each techInfo in features
+          p()= techInfo
+          hr
+    div(class='product-price')
+      p() $#{product.price}
+    div(class='')
+      button(class='add-button button is-medium is-primary' data-componentid=`${component._id}` data-productid=`${product._id}`) add
 
     script(type='text/javascript' src='/javascripts/updateCookies.js')
         
