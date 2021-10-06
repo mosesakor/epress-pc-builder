@@ -19,7 +19,9 @@ exports.component_detail = function (req, res, next) {
   async.parallel(
     {
     component: function (callback) {
-        Component.findById(req.params.id).exec(callback);
+        Component.findById(req.params.id)
+        .populate("component")
+          .exec(callback);
       },
     products: function (callback) {
     Product.find({ component: req.params.id })
@@ -35,7 +37,7 @@ exports.component_detail = function (req, res, next) {
             return next(err);
         }
         res.render("component_detail", {
-        title: "Choose " + results.component.title,
+        title: "Select Your " + results.component.name,
         component: results.component,
         products: results.products,
         });

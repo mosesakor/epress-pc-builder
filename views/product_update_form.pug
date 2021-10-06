@@ -2,26 +2,41 @@ extends layout
 
 block content
   h4 System Builder
-  section
-    -  if (typeof errors != 'undefined')
-      ul
-        each error in errors
-          li= err.msg
-    form(method='POST' action='')
-      div
-        fieldset
-          legend NAME 
-          input(minlength='3', required, type='text', name='name', id='name', value=(undefined===product ? '' : product.name))
-        fieldset
-          legend FEATURES
-          textarea(required, name="technicalInformation", id="technicalInformation", cols="30", rows="10") #{value=(undefined===product ? '' : product.technicalInformation)}
-        fieldset
-          legend PRICE
-          input(required, type='text', name='price', id='price', value=(undefined===product ? '' : product.price))
-        fieldset
-          legend STOCK 
-          input(required, type='text', name='stock', id='stock', value=(undefined===product ? '' : product.stock))
-        button(type='submit') Submit
+  div.secondary-navigation
+    h1(class='is-size-3 has-text-weight-medium') #{title}
+    span(class='has-text-centered')
+     a(href='/list') Home
+     p(class='ml-2 is-inline') >
+     a(class='ml-2' href=product.url) #{product.name}
+  section(class='product-update-form-container')
+    .product-update-form
+      -  if (typeof errors != 'undefined')
+        ul
+          each error in errors
+            li= err.msg
+      form(method='POST' action='' class='update-form-container has-text-white')
+        .field
+          label.legend Name
+          .control
+            input.input(class='input' minlength='3', required, type='text', name='name', id='name', value=(undefined===product ? '' : product.name))
+        .field
+          label.legend Features
+          .control
+            textarea.textarea(required, name="technicalInformation", id="technicalInformation", cols="30", rows="10") #{value=(undefined===product ? '' : product.technicalInformation)}
+        .field
+          label.legend Price 
+          .control
+            input.input(required, type='text', name='price', id='price', value=(undefined===product ? '' : product.price))
+        .field
+          label.legend Stock
+          .control
+            input.input(required, type='text', name='stock', id='stock', value=(undefined===product ? '' : product.stock))
+        .field.is-grouped
+          .control
+            button.button.is-link(type='submit') Submit
+          .control
+            button.button.is-link.is-light Cancel
+                      
                 
 
     

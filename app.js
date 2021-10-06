@@ -60,6 +60,10 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+app.listen(5010,function(){
+  console.log("server is running on port 5010");
+});
+
 
 
 module.exports = app;

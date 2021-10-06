@@ -43,13 +43,12 @@ function componentCreate(name, cb) {
   }  );
 }
 
-function productCreate(name, component, price, stock, manufacturer, technicalInformation, img, cb) {
+function productCreate(name, component, price, stock, technicalInformation, img, cb) {
   productdetail = { 
     name: name,
     component: component,
     price: price,
     stock: stock,
-    manufacturer: manufacturer,
     technicalInformation: technicalInformation,
     img: img,
   }
@@ -126,10 +125,10 @@ function createComponents(cb) {
 function createProducts(cb) {
     async.parallel([
         function(callback) {
-          productCreate('AMD Ryzen Threadripper 3990X, 64 Cores &  128-Threads Unlocked Desktop Processor', components[0], 4989.99, 20, 'AMD', 'cores: 64, Base Speed: 2.9 GHz, Turbo Speed: 4.3 GHz, Model: Ryzen Threadripper 3990X, Socket Type: sTRX4, Memory Type: DDR4 - 3200 MHz, Threads: 128', '01', callback);
+          productCreate('AMD Ryzen Threadripper 3990X, 64 Cores &  128-Threads Unlocked Desktop Processor', components[0], '$4,989.99', 20, 'Brand: AMD, Model: Ryzen Threadripper 3990X, cores: 64, Threads: 128, Socket Type: sTRX4, Base Speed: 2.9 GHz, Turbo Speed: 4.3 GHz, Memory Type: DDR4 - 3200 MHz', '01', callback);
         },
         function(callback) {
-          productCreate('Intel Core i9-10980XE, 18 Cores & 16 Threads Turbo Unlocked X-Series Desktop Processor', components[0], 1087, 20, 'Intel', 'cores: 18, Base Speed: 3.0 GHz, Turbo Speed: 4.8 GHz, Model: Core i9-10980XE, Socket Type: LGA 2066, Memory Type: DDR4 - 2933 MHz, Threads: 36', '02', callback);
+          productCreate('Intel Core i9-10980XE, 18 Cores & 16 Threads Turbo Unlocked X-Series Desktop Processor', components[0], '$1,087.99', 20, 'Brand: Intel, Model: Core i9-10980XE, Cores: 18,  Threads: 36, Socket Type: LGA 2066, Base Speed: 3.0 GHz, Turbo Speed: 4.8 GHz, Memory Type: DDR4 - 2933 MHz', '02', callback);
         }
         
         ],

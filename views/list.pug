@@ -10,28 +10,36 @@ block content
       - let product = null
         if (userList[key])
           -  product = userList[key]
+          div(class='product-titles')
+              p Component
+              p Selection
+              p Price
+              p Product Link 
+              p Remove
           div(class='list-card')
             div(class='card-item-0')
-              a(href=product.url class='liner is-size-5 has-text-weight-medium has-text-black') #{component.name}
-            div(class='card-item-1 ' )
+              
+            div(class='card-item-1 has-text-weight-medium' )
               h1(class='is-size-6 has-text-grey') Selection
-              p(class='is-size-6')
-                a(href=product.url class='has-text-black') Intel Core i9-10980XE
-            div(class='card-item-2')
-              h4(class='is-size-6 has-text-grey') Price
-              p(class='is-size-6')
-                a(href=product.url class='has-text-black') $#{product.price}
-            div(class='card-item-3')
+              p(class='is-size-6 pt-1')
+                a(href=product.url class='has-text-black') Intel Core i9-10980XE IntIntel Core i9-10980XEel Core i9-10980XE
+            div(class='card-item-2 has-text-weight-medium')
+              h1(class='is-size-6 has-text-grey') Price
+              p(class='is-size-6 has-text-black pt-1') #{product.price}
+            div
               button(class='component-button button is-link') Buy from Amazon
             div(class='card-item-4')
               button(class='component-button button is-danger removeKey' data-removekey=`${key}`) Remove
         else
-          div
-            hr
-            div(class='card-item') #{component.name}
+          hr(class='')
+          div(class='add-component')
+            div()
+              a(href='' class='liner is-size-5 has-text-weight-medium has-text-black') #{component.name}
             div
-              p
-                a(class='button' href=component.url) choose a #{component.name}
+              p(class='')
+                a(class='button is-link choose-btn' href=component.url) ADD Component
+    div(class='cart')
+      p(class='has-text-centered') Price: #{totalPrice}
 
 
   script(type='text/javascript' src='/javascripts/removeCookies.js')

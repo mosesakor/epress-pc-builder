@@ -3,8 +3,8 @@ extends layout
 block content
   nav(class='navbar is-black')
   div(class='product-detail-container')
-    div(class='product-name')
-      h1= product.name
+    div(class='secondary-navigation')
+      h1(class='is-size-3 has-text-weight-medium')= product.name
       p(class='product-edit')
         span
           a(href=`${product.url}/update`) Update
@@ -20,9 +20,9 @@ block content
           p()= techInfo
           hr
     div(class='product-price')
-      p() $#{product.price}
+      p() #{product.price}
     div(class='')
-      button(class='add-button button is-medium is-primary' data-componentid=`${component._id}` data-productid=`${product._id}`) add
+      button(class='add add-button button is-medium is-primary' data-componentid=`${component._id}` data-productid=`${product._id}`) Add
 
     script(type='text/javascript' src='/javascripts/updateCookies.js')
         
