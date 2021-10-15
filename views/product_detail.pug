@@ -1,7 +1,6 @@
 extends layout 
 
 block content
-  nav(class='navbar is-black')
   div(class='product-detail-container')
     div(class='secondary-navigation')
       h1(class='is-size-3 has-text-weight-medium')= product.name
@@ -11,7 +10,7 @@ block content
         span
           a(href=`${product.url}/delete`) Delete
     div(class='product-image')
-      img(class='' src='/images/01.jpg')
+      img(class='' src=`/images/${product.img}`)
     div(class='product-specs')
       h2 Product Specification
       div(class='features-container')

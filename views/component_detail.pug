@@ -1,42 +1,36 @@
 extends layout 
 
 block content
-  h4 System Builder
-    div(class='list-container')
-    div(class='secondary-navigation')
-      h1(class='is-size-2')=title
-      span(class='has-text-centered')
-      a(href='/list') Home
-      p(class='ml-2 is-inline') >
-
-    .component-detail
-      div(class='component-titles has-text-white')
-        p Product
-        p Title
-        p Price
-        p Link
-        p Add
-      each product in products
-        .component-dock(class='box')
-          .component-item-1
+  div(class='secondary-navigation')
+    h1(class='is-size-2')=title
+  .component-detail
+    div(class='component-titles has-text-white')
+      p Product
+      p Title
+      p Price
+      p Link
+      p Add
+    each product in products
+      .component-dock(class='box')
+        .component-item-1
+          div
+            img(src=`/images/${product.img}` width='100')
+        .component-item-2
+          h1(class='is-size-6 has-text-grey') Price
+          p() #{product.price}              
+        .component-item-3
+          h1(class='is-size-6 has-text-grey') Selection
+          a(class='has-text-black' href=product.url) #{product.name}
+        .component-item-4
+          - features = product.technicalInformation.split(',')
+          each feature in features
             div
-              img(src='/images/01.jpg' width='100')
-          .component-item-2
-            h1(class='is-size-6 has-text-grey') Price
-            p() #{product.price}              
-          .component-item-3
-            h1(class='is-size-6 has-text-grey') Selection
-            a(class='has-text-black' href=product.url) #{product.name}
-          .component-item-4
-            - features = product.technicalInformation.split(',')
-            each feature in features
-              div
-                span #{feature.split(':')[0]}:
-                span(class='has-text-weight-normal') #{feature.split(':')[1]} 
-          .component-item-5 
-            button(class='component-button button is-small is-link') View on Amazon
-          .component-item-6
-            button(class='add component-button button is-small is-danger' data-componentid=`${component._id}` data-productid=`${product._id}`) Add
+              span #{feature.split(':')[0]}:
+              span(class='has-text-weight-normal') #{feature.split(':')[1]} 
+        .component-item-5 
+          a(class='component-button button is-small is-link' href=`https://www.amazon.com/s?k=${product.name}`) View on Amazon
+        .component-item-6
+          button(class='add component-button button is-small is-danger' data-componentid=`${component._id}` data-productid=`${product._id}`) Add
     
   script(type='text/javascript' src='/javascripts/updateCookies.js')
       

@@ -8,12 +8,22 @@ var Product = require("../models/product");
 
 var mongoose = require("mongoose");
 var path = require("path");
+var multer = require("multer");
+
+// Require controller modules.
+var product_controller = require('../controllers/productController');
+var component_controller = require('../controllers/componentController');
+var product_instance_controller = require('../controllers/productInstanceController');
+
+
 
 
 /* GET home page. */
 router.get('/', function(req, res) {
   res.redirect('/list');
 });
+
+
 
 // Require controller modules.
 var component_controller = require("../controllers/componentController");

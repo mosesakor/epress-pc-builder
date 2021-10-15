@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var livereload = require("livereload");
 var connectLiveReload = require("connect-livereload");
+var multer = require('multer')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -59,6 +60,8 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
 
 app.listen(5010,function(){
   console.log("server is running on port 5010");

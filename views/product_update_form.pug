@@ -10,11 +10,16 @@ block content
      a(class='ml-2' href=product.url) #{product.name}
   section(class='product-update-form-container')
     .product-update-form
-      -  if (typeof errors != 'undefined')
+      if (typeof errors != 'undefined')
         ul
           each error in errors
-            li= err.msg
-      form(method='POST' action='' class='update-form-container has-text-white')
+            li= error.msg
+      div
+        if (typeof product != 'undefined' && product.img && typeof product.img != 'undefined')
+          img(class='' src=`/images/${product.img}`)
+        else 
+          p image not found
+      form(method='POST' action='' class='update-form-container has-text-white' enctype="multipart/form-data")
         .field
           label.legend Name
           .control
@@ -31,6 +36,10 @@ block content
           label.legend Stock
           .control
             input.input(required, type='text', name='stock', id='stock', value=(undefined===product ? '' : product.stock))
+        .field
+          label.legend Image
+          .control
+            input#part_image(type='file' name='upload')
         .field.is-grouped
           .control
             button.button.is-link(type='submit') Submit

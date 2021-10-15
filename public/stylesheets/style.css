@@ -24,6 +24,11 @@ p {
 .list-container {
   background-color: white;
   color:black;
+  padding: 2rem;
+}
+
+.list-box {
+  box-shadow: 0 19px 38px rgba(0,0,0,.3),0 15px 12px rgba(0,0,0,.22);
 }
 
 .list-card > hr {
@@ -123,10 +128,12 @@ p {
   padding: 10px;
   color: white;
   padding-top: 6rem;
+  padding-bottom: 1.5rem;
   font-size: large;
 }
 
 .secondary-navigation h1 {
+
 }
 
 .product-edit > span {
@@ -226,6 +233,11 @@ span > a:hover {
 @media only screen and (min-width: 1000px) {
   .list-card {
     grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
+    font-weight: bold;
+  }
+
+  .list-card a, .list-card p{
+    font-weight: bold;
   }
   
   .product-titles {
@@ -234,6 +246,7 @@ span > a:hover {
     background-color: black;
     color: white;
     padding: 15px;
+    font-size: 1rem;
   }
   
   .list-card > div > h1 {
@@ -319,7 +332,6 @@ span > a:hover {
 /* Component Detail */
 
 .component-detail {
-  border: 3px solid red;
   margin-top: 2rem;
   padding: 1.5rem;
 }
@@ -363,6 +375,10 @@ span > a:hover {
   width: 100%;
 }
 
+.component-titles {
+  display: none;
+}
+
 @media only screen and (min-width: 1000px) {
 
   .component-dock > div {
@@ -370,7 +386,6 @@ span > a:hover {
   
   .component-dock {
     display: grid;
-    border: 3px solid yellow;
     grid-template-areas:
     "product title title price view adder"
     "product features features . . .";

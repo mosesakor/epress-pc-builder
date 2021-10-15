@@ -1,11 +1,10 @@
-require("dotenv").config();
 var Product = require('../models/product');
 var Component = require('../models/component')
 var async = require('async');
 var mongoose = require('mongoose')
-
+var multer = require('multer')
 const fs = require('fs');
-const { body, validationResult } = require("express-validator");
+const { body, validationResult } = require("express-validator/");
 
 exports.homepage = function(req, res, next) {
     Component.find()
@@ -164,7 +163,19 @@ exports.product_update_post = [
       _id: req.params.id,
     });
 
+    if (req.file && errors.isEmpty()) {
+      console.log('FILE', req.file)
+      product.img = req.file.filename;
+      fs.unlink(`public/images/${req.body.fileName}`, (err) => {
+        if (err) console.log(err);
+        console.log(req.body.fileName, "was deleted");
+      });
+    } else if(req.body.fileName && req.body.fileName !='null' && req.body.fileName !='undefined'){
+      product.img = req.body.fileName;
+    }
+
     if (!errors.isEmpty()) {
+  
 
       async.parallel(
         {
@@ -196,5 +207,5 @@ exports.product_update_post = [
         }
       );
     }
-},
+  }
 ];
