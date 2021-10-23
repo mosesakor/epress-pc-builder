@@ -63,9 +63,11 @@ app.use(function(err, req, res, next) {
 
 
 
-app.listen(5010,function(){
-  console.log("server is running on port 5010");
-});
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 8000;
+}
+app.listen(port);
 
 
 

@@ -3,6 +3,10 @@ extends layout
 block content
   div(class='secondary-navigation')
     h1(class='is-size-2')=title
+    span(class='has-text-centered')
+      a(href='/list') Home
+      p(class='ml-2 is-inline') >
+      a(class='ml-2' href=component.url) #{component.name}
   .component-detail
     div(class='component-titles has-text-white')
       p Product

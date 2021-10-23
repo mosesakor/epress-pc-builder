@@ -4,7 +4,11 @@ block content
   div(class='product-detail-container')
     div(class='secondary-navigation')
       h1(class='is-size-3 has-text-weight-medium')= product.name
-      p(class='product-edit')
+      span(class='has-text-centered mt-2')
+        a(href='/list') Home
+        p(class='ml-2 is-inline') >
+        a(class='ml-2' href=product.url) #{product.name}
+      p(class='product-edit mt-4')
         span
           a(href=`${product.url}/update`) Update
         span
