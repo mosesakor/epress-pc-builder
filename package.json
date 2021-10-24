@@ -24,9 +24,5 @@
     "multer": "^1.4.3",
     "pug": "2.0.0-beta11"
   },
-  "devDependencies": {
-    "connect-livereload": "^0.6.1",
-    "livereload": "^0.9.3",
-    "nodemon": "^2.0.14"
-  }
+
 }
