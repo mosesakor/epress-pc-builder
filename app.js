@@ -4,7 +4,6 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var livereload = require("livereload");
-var connectLiveReload = require("connect-livereload");
 var multer = require('multer')
 
 var indexRouter = require('./routes/index');
@@ -26,8 +25,6 @@ mongoose.connect(mongoDB, { useNewUrlParser: true , useUnifiedTopology: true});
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-
-app.use(connectLiveReload());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
