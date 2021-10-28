@@ -1,7 +1,6 @@
 extends layout 
 
 block content
-  h4 System Builder
   div.secondary-navigation
     h1(class='is-size-3 has-text-weight-medium') #{title}
     span(class='has-text-centered')
@@ -14,9 +13,9 @@ block content
         ul
           each error in errors
             li= error.msg
-      div
+      div(class='image-container')
         if (typeof product != 'undefined' && product.img && typeof product.img != 'undefined')
-          img(class='' src=`/images/${product.img}`)
+          img(class='image-update' src=`/images/${product.img}` width='400')
         else 
           p image not found
       form(method='POST' action='' class='update-form-container has-text-white' enctype="multipart/form-data")

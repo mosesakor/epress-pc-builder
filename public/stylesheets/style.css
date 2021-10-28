@@ -292,6 +292,10 @@ span > a:hover {
 
 /* Product Update */
 
+.image-container {
+  text-align: center;
+  padding: 1rem;
+}
 
 .update-form-container {
 
