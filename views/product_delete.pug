@@ -1,10 +1,23 @@
 extends layout
 
 block content
-  h1 #{title}
-
-  form(method='POST' action='')
-    div.form-group
-      input#productid.form-control(type='hidden', name='productid', required='true', value=product._id )
-
-      button.btn.btn-primary(type='submit') Delete
+  div(class='secondary-navigation')
+      h1(class='is-size-3 has-text-weight-medium')= product.name
+      span(class='has-text-centered mt-2')
+        a(href='/list') Home
+        p(class='ml-2 is-inline') >
+        a(class='ml-2' href=product.url) #{product.name}
+  
+  div(class='product-delete').has-text-centered
+    h1.has-background-link.mb-5.p-2.has-text-white.is-size-5 Delete Product Permanently?
+    form(method='POST' action='')
+      div.form-group.p-2.is-size-6.has-text-centered
+        input#productid.form-control(type='hidden', name='productid', required='true', value=product._id )
+        p If you delete this product, you will be unable to restore it.
+        p Are you sure you want to permanently delete the product?
+      div.has-text-centered
+        img( src=`/images/${product.img}` width='300')
+        h1.mb-2 #{product.name}
+      div.has-text-centered.mb-2
+        button.button.mr-2.is-primary(type='submit') Delete
+        a.button.is-danger(href=product.url) Cancel

@@ -428,8 +428,16 @@ span > a:hover {
   .component-item-6 {
     grid-area: adder;
   }
+}
 
+/* Product Delete */
 
+.product-delete {
+  margin: 8rem 16rem;
+  border: 3px solid grey;
+}
 
-
+.product-delete form, .product-delete h1 {
+  font-size: large;
+  font-weight: bold;
 }
